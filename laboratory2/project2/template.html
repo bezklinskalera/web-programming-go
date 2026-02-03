@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Практична робота №2</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+<body>
+<h1>ПРАКТИЧНА РОБОТА №2. Викид шкідливих речовин у вигляді суспендованих твердих частинок</h1>
+
+<div class="main-container">
+    <div class="task">
+        <h2>Завдання</h2>
+        <p>Введіть необхідні дані (Обсяг палива, що використовувалось за звітний період)</p>
+
+        <form method="POST">
+            <div class="container">
+                <div class="items-names">
+                    <ul>
+                        <li>Донецьке газове вугілля марки ГР, т</li>
+                        <input type="text" name="Vygilya" value="{{.Vygilya}}">
+                    </ul>
+                </div>
+                <div class="items-names">
+                    <ul>
+                        <li>Високосірчистий мазут марки 40, т</li>
+                        <input type="text" name="Mazut" value="{{.Mazut}}">
+                    </ul>
+                </div>
+                <div class="items-names">
+                    <ul>
+                        <li>Природний газ із газопроводу Уренгой-Ужгород, м³</li>
+                        <input type="text" name="Gaz" value="{{.Gaz}}">
+                    </ul>
+                </div>
+            </div>
+            <button id="button" type="submit">Обчислимо</button>
+        </form>
+
+        {{if .ResultEmVyg}}
+        <div>
+            <p>Показник емісії твердих речовин при спалюванні вугілля (г/Дж): {{printf "%.2f" .ResultEmVyg}}</p>
+            <p>Валовий викид вугілля (т): {{printf "%.2f" .ResultValVukudVyg}}</p>
+            <p>Показник емісії твердих речовин при спалюванні мазуту (г/Дж): {{printf "%.2f" .ResultEmMazut}}</p>
+            <p>Валовий викид мазуту (т): {{printf "%.2f" .ResultValVukudMazut}}</p>
+            <p>Валовий викид газу (т): {{printf "%.2f" .ResultValVukudGaz}}</p>
+        </div>
+        {{end}}
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 /* Загальні стилі для всього документа */
 html{
-  background-color: rgb(70, 109, 96);
+  background-color: rgb(109, 70, 106);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -17,11 +17,11 @@ h1,h2 {
   margin: 10px;
   padding: 10px;
   padding-inline: 30px;
-  background-color: rgb(70, 109, 96);
+  background-color: rgb(109, 70, 106);
   text-align: center;
 }
 
-/* Стилі для списку компонентів палива */
+/* Стилі для списку */
 .items-names > ul {
   display: flex;
   flex-direction: column;
@@ -37,10 +37,10 @@ h1,h2 {
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 5px;
-  width: 70px;
+  
 }
 
-/* Стилі для контейнера з компонентами палива */
+/* Стилі для контейнера */
 .container {
   display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -51,7 +51,7 @@ h1,h2 {
   margin: 10px;
   padding: 10px;
   padding-inline: 30px;
-  background-color: rgb(212, 250, 238);
+  background-color: rgb(251, 228, 249);
   border-radius: 25px;
 }
 
@@ -78,7 +78,7 @@ table {
 }
 
 #button, #button2{
-  background-color: #04AA6D; 
+  background-color: #ba14c0; 
   border: none;
   color: white;
   padding: 15px 32px;
@@ -88,6 +88,10 @@ table {
   font-size: 16px;
   margin: 20px;
   border-radius: 25px;
+}
+
+.val-vukud {
+  font-weight: bold;
 }
 
 /* Медіазапит для екранів шириною до 1100px */
