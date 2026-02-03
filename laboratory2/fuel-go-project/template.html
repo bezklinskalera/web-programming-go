@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Практична робота №1</title>
+
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+
+<body>
+
+<h1>ПРАКТИЧНА РОБОТА №1. Паливо. характеристики та властивості.</h1>
+
+<div class="main-container">
+
+    <div class="task">
+        <h2>Завдання №1</h2>
+
+        <form method="POST">
+
+        <div class="container">
+            <div class="items-names">
+                <ul>
+                    <li>H<sup>P</sup>, %</li>
+                    <input type="text" name="h" value="{{.H}}">
+                </ul>
+            </div>
+
+            <div class="items-names">
+                <ul>
+                    <li>C, %</li>
+                    <input type="text" name="c" value="{{.C}}">
+                </ul>
+            </div>
+
+            <div class="items-names">
+                <ul>
+                    <li>S<sup>P</sup>, %</li>
+                    <input type="text" name="s" value="{{.S}}">
+                </ul>
+            </div>
+
+            <div class="items-names">
+                <ul>
+                    <li>N<sup>P</sup>, %</li>
+                    <input type="text" name="n" value="{{.N}}">
+                </ul>
+            </div>
+
+            <div class="items-names">
+                <ul>
+                    <li>O<sup>P</sup>, %</li>
+                    <input type="text" name="o" value="{{.O}}">
+                </ul>
+            </div>
+
+            <div class="items-names">
+                <ul>
+                    <li>W, %</li>
+                    <input type="text" name="w" value="{{.W}}">
+                </ul>
+            </div>
+
+            <div class="items-names">
+                <ul>
+                    <li>A<sup>P</sup>, %</li>
+                    <input type="text" name="a" value="{{.A}}">
+                </ul>
+            </div>
+        </div>
+
+        <button id="button" type="submit">Обчислити</button>
+        </form>
+
+        {{if .Krs}}
+        <p>Коефіцієнт переходу від робочої до сухої маси:</p>
+        <p>{{.Krs}}</p>
+
+        <p>Коефіцієнт переходу від робочої до горючої маси:</p>
+        <p>{{.Krg}}</p>
+        {{end}}
+
+    </div>
+
+    <div class="task">
+        <h2>Завдання №2</h2>
+    
+        <form method="POST">
+    
+        <div class="container">
+            <div class="items-names">
+                <ul>
+                    <li>C, %</li>
+                    <input type="text" name="c2" value="{{.C2}}">
+                </ul>
+            </div>
+    
+            <div class="items-names">
+                <ul>
+                    <li>H, %</li>
+                    <input type="text" name="h2" value="{{.H2}}">
+                </ul>
+            </div>
+    
+            <div class="items-names">
+                <ul>
+                    <li>O, %</li>
+                    <input type="text" name="o2" value="{{.O2}}">
+                </ul>
+            </div>
+    
+            <div class="items-names">
+                <ul>
+                    <li>S, %</li>
+                    <input type="text" name="s2" value="{{.S2}}">
+                </ul>
+            </div>
+    
+            <div class="items-names">
+                <ul>
+                    <li>W, %</li>
+                    <input type="text" name="w2" value="{{.W2}}">
+                </ul>
+            </div>
+    
+            <div class="items-names">
+                <ul>
+                    <li>A, %</li>
+                    <input type="text" name="a2" value="{{.A2}}">
+                </ul>
+            </div>
+    
+            <div class="items-names">
+                <ul>
+                    <li>V, %</li>
+                    <input type="text" name="v2" value="{{.V2}}">
+                </ul>
+            </div>
+        </div>
+    
+        <button id="button2" type="submit">Обчислити</button>
+        </form>
+    
+        {{if .ResultTeplota2}}
+        <p>Теплота згоряння: {{.ResultTeplota2}} МДж/кг</p>
+        {{end}}
+    </div>
+</div>
+
+</body>
+</html>
