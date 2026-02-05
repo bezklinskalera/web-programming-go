@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична робота №3</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+<body>
+
+<h1>Практична робота 3: Веб калькулятор для розрахунку електричних навантажень об’єктів з використанням методу впорядкованих діаграм.</h1>
+
+<div class="main-container">
+
+    <div class="task">
+        <h2>Завдання 1</h2>
+        <p>Введіть необхідні дані:</p>
+
+        <form method="POST" class="container">
+
+            <div class="items-names">
+                <label>Кількість (n):</label>
+                <input type="number" step="1" name="n" required>
+            </div>
+
+            <div class="items-names">
+                <label>Номінальна потужність Pн, кВт:</label>
+                <input type="number" step="0.01" name="pn" required>
+            </div>
+
+            <div class="items-names">
+                <label>Коефіцієнт використання Kv:</label>
+                <input type="number" step="0.01" name="kv" required>
+            </div>
+
+            <div class="items-names">
+                <label>tgφ:</label>
+                <input type="number" step="0.01" name="tg" required>
+            </div>
+
+            <button type="submit">Додати електроприймач</button>
+        </form>
+
+        {{ if .EPs }}
+        <div class="results">
+
+            <h2>Таблиця електроприймачів</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>n</th>
+                        <th>Pн</th>
+                        <th>n·Pн</th>
+                        <th>Kv</th>
+                        <th>n·Pн·Kv</th>
+                        <th>tgφ</th>
+                        <th>n·Pн·Kv·tgφ</th>
+                        <th>n·Pн²</th>
+                        <th>Iгр, А</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{ range $i, $ep := .EPs }}
+                    <tr>
+                        <td>{{ $i | add1 }}</td>
+                        <td>{{ $ep.N }}</td>
+                        <td>{{ printf "%.2f" $ep.Pn }}</td>
+                        <td>{{ printf "%.2f" $ep.PnSum }}</td>
+                        <td>{{ printf "%.2f" $ep.Kv }}</td>
+                        <td>{{ printf "%.2f" $ep.PnKv }}</td>
+                        <td>{{ printf "%.2f" $ep.Tg }}</td>
+                        <td>{{ printf "%.2f" $ep.PnKvTg }}</td>
+                        <td>{{ printf "%.2f" $ep.Pn2 }}</td>
+                        <td>{{ printf "%.2f" $ep.GroupI }}</td>
+                    </tr>
+                {{ end }}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3">Σ</th>
+                        <th>{{ printf "%.2f" .SumPn }}</th>
+                        <th></th>
+                        <th>{{ printf "%.2f" .SumPnKv }}</th>
+                        <th></th>
+                        <th>{{ printf "%.2f" .SumPnKvTg }}</th>
+                        <th>{{ printf "%.2f" .SumPn2 }}</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <h2>Підсумкові розрахунки</h2>
+
+            <table>
+                <tr>
+                    <td>Ефективна кількість електроприймачів Ne</td>
+                    <td>{{ printf "%.2f" .Ne }}</td>
+                </tr>
+                <tr>
+                    <td>Коефіцієнт попиту Kp</td>
+                    <td>{{ printf "%.2f" .Kp }}</td>
+                </tr>
+                <tr>
+                    <td>Активна розрахункова потужність Pp, кВт</td>
+                    <td>{{ printf "%.2f" .Pp }}</td>
+                </tr>
+                <tr>
+                    <td>Реактивна розрахункова потужність Qp, квар</td>
+                    <td>{{ printf "%.2f" .Qp }}</td>
+                </tr>
+                <tr>
+                    <td>Повна розрахункова потужність Sp, кВА</td>
+                    <td>{{ printf "%.2f" .Sp }}</td>
+                </tr>
+                <tr>
+                    <td>Розрахунковий струм Ip, А</td>
+                    <td>{{ printf "%.2f" .Ip }}</td>
+                </tr>
+            </table>
+
+        </div>
+        {{ end }}
+    </div>
+
+</div>
+
+</body>
+</html>
