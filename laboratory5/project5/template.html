@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична робота №5</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+
+<body>
+    <h1>ПРАКТИЧНА РОБОТА No5. Надійність електропостачальних систем.</h1>
+
+    <form method="POST">
+        <div class="main-container">
+
+            <h2>Завдання</h2>
+            <p><b>Порівняти надійність одноколової та двоколової систем електропередачі</b></p>
+
+            <div>
+                <p>Частота відмов елегазовий вимикач - 110 (кВ):</p>
+                <input class="val-vukud" type="text" name="ChVidEl110" value="{{.ChVidEl110}}">
+                <p>Тривалість відновлення елегазовий вимикач - 110 (год):</p>
+                <input class="val-vukud" type="text" name="TrVidEl110" value="{{.TrVidEl110}}">
+            </div>
+
+            <div>
+                <p>Частота відмов на 10 км ПЛ-110(кВ):</p>
+                <input class="val-vukud" type="text" name="ChVidPl110" value="{{.ChVidPl110}}">
+                <p>Тривалість відновлення на 10 км ПЛ-110 (год):</p>
+                <input class="val-vukud" type="text" name="TrVidPl110" value="{{.TrVidPl110}}">
+            </div>
+
+            <div>
+                <p>Частота відмов трансформатор 110/10 (кВ):</p>
+                <input class="val-vukud" type="text" name="ChVidT110" value="{{.ChVidT110}}">
+                <p>Тривалість відновлення трансформатор 110/10 (год):</p>
+                <input class="val-vukud" type="text" name="TrVidT110" value="{{.TrVidT110}}">
+            </div>
+
+            <div>
+                <p>Частота відмов ввідний вимикач 10 кВ:</p>
+                <input class="val-vukud" type="text" name="ChVidVV10" value="{{.ChVidVV10}}">
+                <p>Тривалість відновлення ввідний вимикач 10 кВ (год):</p>
+                <input class="val-vukud" type="text" name="TrVidVV10" value="{{.TrVidVV10}}">
+            </div>
+
+            <div>
+                <p>Частота відмов 6 приєднань 10 кВ:</p>
+                <input class="val-vukud" type="text" name="ChVidPr10" value="{{.ChVidPr10}}">
+                <p>Тривалість відновлення 6 приєднань 10 кВ (год):</p>
+                <input class="val-vukud" type="text" name="TrVidPr10" value="{{.TrVidPr10}}">
+            </div>
+
+           
+            <div>
+                <p>Частота відмов секційного вимикача 10 (кВ):</p>
+                <input class="val-vukud" type="text" name="ChVidSek" value="{{.ChVidSek}}">
+            </div>
+
+         
+            <div>
+                <p>Частота відмов:</p>
+                <input class="val-vukud" type="text" name="ChVid2" value="{{.ChVid2}}">
+                <p>Тривалість відновлення:</p>
+                <input class="val-vukud" type="text" name="TrVid2" value="{{.TrVid2}}">
+                <p>Середній час планового простою трансформатора 35 кВ:</p>
+                <input class="val-vukud" type="text" name="SerChas2" value="{{.SerChas2}}">
+            </div>
+
+            <div>
+                <p>У разі аварійних вимкнень (грн/кВт*год):</p>
+                <input class="val-vukud" type="text" name="ZbutkiAv" value="{{.ZbutkiAv}}">
+                <p>У разі планових вимкнень (грн/кВт*год):</p>
+                <input class="val-vukud" type="text" name="ZbutkiPl" value="{{.ZbutkiPl}}">
+            </div>
+
+     
+            <div>
+                <button class="val-vukud" type="submit">Обчислити</button>
+            </div>
+
+            <h2>Розв’язок</h2>
+            <div>
+                <p class="val-vukud">Частота відмов одноколової системи: {{.ChastotaVidOdnok}}</p>
+                <p class="val-vukud">Середня тривалість відновлення: {{.TryvVidOdnok}}</p>
+                <p class="val-vukud">Коефіцієнт аварійного простою: {{.KAva}}</p>
+                <p class="val-vukud">Коефіцієнт планового простою: {{.KPlan}}</p>
+                <p class="val-vukud">Частота відмов одночасно двох кіл: {{.ChDvaKola}}</p>
+                <p class="val-vukud">Частота відмов двоколової системи з секційним вимикачем: {{.ChDvaKolaSekVum}}</p>
+                <p class="val-vukud">Математичне сподівання аварійного недовідпущення електроенергії: {{.MatAv}}</p>
+                <p class="val-vukud">Математичне сподівання планового недовідпущення електроенергії: {{.MatPl}}</p>
+                <p class="val-vukud">Математичне сподівання збитків: {{.MatZb}}</p>
+            </div>
+
+        </div>
+    </form>
+</body>
+
+</html>
