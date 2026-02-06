@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична робота №4</title>
+
+    <script src="/static/app.js" defer></script>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+
+<body>
+
+    <h1>ПРАКТИЧНА РОБОТА №4. Розрахунок струму трифазного КЗ,
+        струму однофазного КЗ, та перевірки на термічну та динамічну стійкість.</h1>
+
+    <div class="main-container">
+
+        <form method="POST">
+
+            <!-- Завдання -->
+            <div class="task">
+                <h2>Завдання 1</h2>
+                <h3>Вибрати кабелі для живлення двотрансформаторної підстанції системи внутрішнього
+                    електропостачання підприємства напругою 10 кВ</h3>
+
+                <br /><br />
+
+                <!-- Дані -->
+                <div>
+                    <div>
+                        <p class="val-vukud">Струм КЗ I<sub>k</sub> (kA):</p>
+                        <input type="number" step="0.01" name="strymKZ" value="{{.StrymKZ}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">Напруга U (кВ):</p>
+                        <input type="number" step="0.01" name="napryga" value="{{.Napryga}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">Фіктивний час вимикання струму КЗ t<sub>ф</sub> (с):</p>
+                        <input type="number" step="0.01" name="fictTimeKZ" value="{{.FictTimeKZ}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">Потужність ТП (кв*А):</p>
+                        <input type="number" step="0.01" name="potTP" value="{{.PotTP}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">Розрахункове навантаження S<sub>м</sub> (кв*А):</p>
+                        <input type="number" step="0.01" name="rozNav" value="{{.RozNav}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">T<sub>м</sub> (год):</p>
+                        <input type="number" step="0.01" name="Tm" value="{{.Tm}}">
+                    </div>
+                </div>
+
+                <br /><h2>Розв’язання</h2><br /><br />
+
+                <div>
+                    <div>
+                        <p class="val-vukud">Розрахунковий струм для нормального режиму:</p>
+                        <p id="rozStrymNormAv">{{.RozStrymNormAv}}</p>
+                    </div>
+                    <div>
+                        <p class="val-vukud">Розрахунковий струм для післяаварійного режиму:</p>
+                        <p id="rozStrymAv">{{.RozStrymAv}}</p>
+                    </div>
+                    <div>
+                        <p class="val-vukud">Економічний переріз s<sub>ек</sub> (мм<sup>2</sup>):</p>
+                        <p id="ecoPerer">{{.EcoPerer}}</p>
+                    </div>
+                    <div>
+                        <p class="val-vukud">s >= s<sub>min</sub> (мм<sup>2</sup>):</p>
+                        <p id="ss">{{.Ss}}</p>
+                    </div>
+                </div>
+
+                <br /><br />
+
+                <h2>Завдання 2</h2>
+                <h3>Визначити струми КЗ на шинах 10 кВ ГПП</h3>
+
+                <div>
+                    <div>
+                        <p class="val-vukud">Напруга:</p>
+                        <input type="number" step="0.01" name="napruga2" value="{{.Napruga2}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">Потужність КЗ (МВ*А):</p>
+                        <input type="number" step="0.01" name="potKZ2" value="{{.PotKZ2}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">S номінальна (кВ·А):</p>
+                        <input type="number" step="0.01" name="sNomt2" value="{{.SNomt2}}">
+                    </div>
+                </div>
+
+                <br /><h2>Розв’язання</h2><br />
+
+                <div>
+                    <p class="val-vukud">Опори елементів заступної схеми (Ом):</p>
+                    <p id="xC">{{.XC}}</p>
+                    <p id="xT">{{.XT}}</p>
+                    <p>Сумарний опір для точки К1: <span id="sumaOpir">{{.SumaOpir}}</span></p>
+                    <p>Початкове діюче значення струму трифазного КЗ: <span id="pochStrym">{{.PochStrym}}</span></p>
+                </div>
+
+                <br /><br />
+
+                <h2>Завдання 3</h2>
+                <h3>Визначити струми КЗ для підстанції ХПнЕМ</h3>
+
+                <div>
+                    <div>
+                        <p class="val-vukud">R<sub>с.н</sub> (Ом):</p>
+                        <input type="number" step="0.01" name="rSn3" value="{{.RSn3}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">X<sub>с.н</sub> (Ом):</p>
+                        <input type="number" step="0.01" name="xSn3" value="{{.XSn3}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">R<sub>с.min</sub> (Ом):</p>
+                        <input type="number" step="0.01" name="rSmin3" value="{{.RSmin3}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">X<sub>с.min</sub> (Ом):</p>
+                        <input type="number" step="0.01" name="xSmin3" value="{{.XSmin3}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">U<sub>к.max</sub> (%):</p>
+                        <input type="number" step="0.01" name="umax3" value="{{.Umax3}}">
+                    </div>
+                    <div>
+                        <p class="val-vukud">U<sub>в.н</sub> (%):</p>
+                        <input type="number" step="0.01" name="uVn3" value="{{.UVn3}}">
+                    </div>
+                </div>
+
+                <br /><h2>Розв’язання</h2><br />
+
+                <div>
+                    <p id="xT3">{{.XT3}}</p>
+                    <p id="xSh3">{{.XSh3}}</p>
+                    <p id="xShmin3">{{.XShmin3}}</p>
+                    <p id="zSh3">{{.ZSh3}}</p>
+                    <p id="zShmin3">{{.ZShmin3}}</p>
+                    <p id="iSH3">{{.ISH3}}</p>
+                    <p id="iSH23">{{.ISH23}}</p>
+                    <p id="iSHmin3">{{.ISHmin3}}</p>
+                    <p id="iSHmin23">{{.ISHmin23}}</p>
+                    <p id="kPr">{{.KPr}}</p>
+                </div>
+
+                <br />
+                <button id="button" type="submit">Обчислимо</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
