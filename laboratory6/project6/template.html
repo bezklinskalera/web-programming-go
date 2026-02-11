@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Практична робота №6</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+<body>
+<h1>ПРАКТИЧНА РОБОТА №6. Розрахунок прибутку від сонячних електростанцій</h1>
+
+<div class="main-container">
+    <div class="task">
+        <h2>Завдання</h2>
+        <p>Введіть дані для розрахунку прибутку:</p>
+
+        <form method="POST">
+            <div class="container">
+                <ul>
+                    <li>Середньодобова потужність (МВт):</li>
+                    <input type="text" name="SerDPot" value="{{.SerDPot}}">
+                </ul>
+                <ul>
+                    <li>Середнє квадратичне відхилення (МВт):</li>
+                    <input type="text" name="SerKvadrVid" value="{{.SerKvadrVid}}">
+                </ul>
+                <ul>
+                    <li>Зменшити похибку до φ (с):</li>
+                    <input type="text" name="SerKvadrVidZmen" value="{{.SerKvadrVidZmen}}">
+                </ul>
+                <ul>
+                    <li>Вартість електроенергії (грн/кВт*год):</li>
+                    <input type="text" name="Vartist" value="{{.Vartist}}">
+                </ul>
+            </div>
+            <button id="button" type="submit">Обчислимо</button>
+        </form>
+
+        {{if .ChastkaEn}}
+        <div>
+            <p>Частка енергії без небалансів (%): {{printf "%.0f" .ChastkaEn}}</p>
+            <p>W1 (МВт*год): {{printf "%.0f" .W1}}</p>
+            <p>Прибуток1 (тис. грн): {{printf "%.0f" .Prub1}}</p>
+            <p>W2 (МВт*год): {{printf "%.0f" .W2}}</p>
+            <p>Штраф1 (тис. грн): {{printf "%.0f" .Sh1}}</p>
+            <p>Частка енергії після вдосконалення (%): {{printf "%.0f" .ChastkaEn2}}</p>
+            <p>W3 (МВт*год): {{printf "%.1f" .W3}}</p>
+            <p>Прибуток2 (тис. грн): {{printf "%.1f" .Prub2}}</p>
+            <p>W4 (МВт*год): {{printf "%.1f" .W4}}</p>
+            <p>Штраф2 (тис. грн): {{printf "%.1f" .Sh2}}</p>
+            <p>Головний прибуток (тис. грн): {{printf "%.1f" .GPrub}}</p>
+        </div>
+        {{end}}
+    </div>
+</div>
+
+</body>
+</html>
